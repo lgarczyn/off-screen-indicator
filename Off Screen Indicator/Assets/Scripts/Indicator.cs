@@ -60,6 +60,24 @@ public class Indicator : MonoBehaviour
     }
 
     /// <summary>
+    /// Sets the scale of the indicator
+    /// </summary>
+    /// <param name="value"></param>
+    public void SetIndicatorScale(float value)
+    {
+        indicatorImage.rectTransform.localScale = Vector2.one * value;
+    }
+
+    /// <summary>
+    /// Sets the scale of the text
+    /// </summary>
+    /// <param name="value"></param>
+    public void SetTextScale(float value)
+    {
+        distanceText.rectTransform.localScale = Vector2.one * value;
+    }
+
+    /// <summary>
     /// Sets the distance text rotation of the indicator.
     /// </summary>
     /// <param name="rotation"></param>

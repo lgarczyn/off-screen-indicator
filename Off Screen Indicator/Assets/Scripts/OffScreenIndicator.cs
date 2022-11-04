@@ -38,6 +38,16 @@ public class OffScreenIndicator : MonoBehaviour
         DrawIndicators();
     }
 
+    float GetScale(Target target, float distance) {
+        float ratio = Mathf.InverseLerp(
+            Mathf.Log(target.MinDistance),
+            Mathf.Log(target.MaxDistance),
+            Mathf.Log(distance)
+        );
+
+        return Mathf.Lerp(1f, target.FarScale, ratio);
+    }
+
     /// <summary>
     /// Draw the indicators on the screen and set thier position and rotation and other properties.
     /// </summary>
@@ -47,7 +57,7 @@ public class OffScreenIndicator : MonoBehaviour
         {
             Vector3 screenPosition = OffScreenIndicatorCore.GetScreenPosition(mainCamera, target.transform.position);
             bool isTargetVisible = OffScreenIndicatorCore.IsTargetVisible(screenPosition);
-            float distanceFromCamera = target.NeedDistanceText ? target.GetDistanceFromCamera(mainCamera.transform.position) : float.MinValue;// Gets the target distance from the camera.
+            float distanceFromCamera = target.GetDistanceFromCamera(mainCamera.transform.position);// Gets the target distance from the camera.
             Indicator indicator = null;
 
             if(target.NeedBoxIndicator && isTargetVisible)
@@ -70,9 +80,30 @@ public class OffScreenIndicator : MonoBehaviour
             if(indicator)
             {
                 indicator.SetImageColor(target.TargetColor);// Sets the image color of the indicator.
-                indicator.SetDistanceText(distanceFromCamera); //Set the distance text for the indicator.
+
+                // Is the target outside of range
+                bool isOutsideRange = distanceFromCamera < target.MinDistance || distanceFromCamera > target.MaxDistance;
+                // Calculate the scale of any scalable component
+                float logScale = GetScale(target, distanceFromCamera);
+
+                // Should the text be shown
+                bool hideText = (target.HideTextOutsideRange && isOutsideRange) || !target.NeedDistanceText;
+                // What scale to use for the text
+                float textScale = target.ScaleTextWithDistance ? logScale : 1f;
+                // 
+                indicator.SetTextScale(hideText ? 0f : textScale);
+                if (!hideText) indicator.SetDistanceText(distanceFromCamera); //Set the distance text for the indicator.
+
+                // Should the indicator be shown
+                bool hideIndicator = isOutsideRange && (
+                    (target.HideArrowOutsideRange && indicator.Type == IndicatorType.ARROW) ||
+                    (target.HideBoxOutsideRange && indicator.Type == IndicatorType.BOX));
+                // What scale to use for the indicator
+                float indicatorScale = target.ScaleIndicatorWithDistance ? logScale : 1f;
+                indicator.SetIndicatorScale(hideIndicator ? 0f : indicatorScale);
+
                 indicator.transform.position = screenPosition; //Sets the position of the indicator on the screen.
-                indicator.SetTextRotation(Quaternion.identity); // Sets the rotation of the distance text of the indicator.
+                if (!hideText) indicator.SetTextRotation(Quaternion.identity); // Sets the rotation of the distance text of the indicator.
             }
         }
     }
