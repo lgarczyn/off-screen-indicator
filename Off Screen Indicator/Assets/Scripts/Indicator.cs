@@ -66,7 +66,7 @@ public class Indicator : MonoBehaviour
     /// <param name="value"></param>
     public void SetIndicatorScale(float value)
     {
-        indicatorImage.rectTransform.localScale = Vector2.one * value;
+        indicatorImage.rectTransform.sizeDelta = Vector2.one * 20f * value;
     }
 
     /// <summary>
