@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
+using Image = UnityEngine.UI.Image;
+using Text = TMPro.TextMeshProUGUI;
 
 namespace PixelPlay.OffScreenIndicator
 {
-using UnityEngine.UI;
 
 /// <summary>
 /// Assign this script to the indicator prefabs.
