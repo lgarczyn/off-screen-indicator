@@ -1,4 +1,7 @@
 ﻿using UnityEngine;
+
+namespace PixelPlay.OffScreenIndicator
+{
 using UnityEngine.UI;
 
 /// <summary>
@@ -79,4 +82,6 @@ public enum IndicatorType
 {
     BOX,
     ARROW
+}
+
 }

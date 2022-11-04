@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+namespace PixelPlay.OffScreenIndicator
+{
+
 class ArrowObjectPool : MonoBehaviour
 {
     public static ArrowObjectPool current;
@@ -66,4 +69,6 @@ class ArrowObjectPool : MonoBehaviour
             arrow.Activate(false);
         }
     }
+}
+
 }

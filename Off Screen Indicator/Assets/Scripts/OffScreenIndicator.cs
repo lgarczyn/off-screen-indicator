@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+namespace PixelPlay.OffScreenIndicator
+{
+
 /// <summary>
 /// Attach the script to the off screen indicator panel.
 /// </summary>
@@ -130,4 +133,6 @@ public class OffScreenIndicator : MonoBehaviour
     {
         TargetStateChanged -= HandleTargetStateChanged;
     }
+}
+
 }

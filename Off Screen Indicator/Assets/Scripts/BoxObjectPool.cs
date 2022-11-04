@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+namespace PixelPlay.OffScreenIndicator
+{
+
 public class BoxObjectPool : MonoBehaviour
 {
     public static BoxObjectPool current;
@@ -66,4 +69,6 @@ public class BoxObjectPool : MonoBehaviour
             box.Activate(false);
         }
     }
+}
+
 }

@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+namespace PixelPlay.OffScreenIndicator
+{
+
 /// <summary>
 /// Attach this script to all the target game objects in the scene.
 /// </summary>
@@ -101,4 +104,6 @@ public class Target : MonoBehaviour
         float distanceFromCamera = Vector3.Distance(cameraPosition, transform.position);
         return distanceFromCamera;
     }
+}
+
 }
