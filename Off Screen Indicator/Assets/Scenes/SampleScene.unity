@@ -895,10 +895,10 @@ MonoBehaviour:
   hideArrowOutsideRange: 0
   hideBoxOutsideRange: 0
   hideTextOutsideRange: 0
-  scaleIndicatorWithDistance: 0
+  scaleIndicatorWithDistance: 1
   scaleTextWithDistance: 0
-  closeScale: 1
-  farScale: 0
+  closeScale: 2
+  farScale: 1
   indicator: {fileID: 0}
 --- !u!23 &1769770278
 MeshRenderer:
