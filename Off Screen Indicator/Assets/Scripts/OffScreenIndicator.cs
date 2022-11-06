@@ -143,18 +143,17 @@ public class OffScreenIndicator : MonoBehaviour
     /// <returns></returns>
     private Indicator GetIndicator(ref Indicator indicator, IndicatorType type)
     {
-        if(indicator != null)
-        {
-            if(indicator.Type != type)
-            {
-                indicator.Activate(false);
-                indicator = type == IndicatorType.BOX ? BoxObjectPool.current.GetPooledObject() : ArrowObjectPool.current.GetPooledObject();
-                indicator.Activate(true); // Sets the indicator as active.
-            }
+        if(indicator != null && indicator.Type != type) {
+             // Sets the indicator as inactive
+            indicator.Activate(false);
+            indicator = null;
         }
-        else
+
+        if (indicator == null)
         {
-            indicator = type == IndicatorType.BOX ? BoxObjectPool.current.GetPooledObject() : ArrowObjectPool.current.GetPooledObject();
+            indicator = type == IndicatorType.BOX ?
+                GetComponent<BoxObjectPool>().GetPooledObject() :
+                GetComponent<ArrowObjectPool>().GetPooledObject();
             indicator.Activate(true); // Sets the indicator as active.
         }
         return indicator;
