@@ -17,6 +17,10 @@ public class OffScreenIndicator : MonoBehaviour
     [Tooltip("Distance offset of the indicators from the centre of the screen")]
     [SerializeField] private float screenBoundOffset = 0.9f;
 
+    [Range(0.5f, 0.9f)]
+    [Tooltip("Distance of the centered indicators from the centre of the screen")]
+    [SerializeField] private float centeredDistance = 100f;
+
     private Camera mainCamera;
     private Vector3 screenCentre;
     private Vector3 screenBounds;
@@ -68,7 +72,7 @@ public class OffScreenIndicator : MonoBehaviour
             else if(target.NeedArrowIndicator && !isTargetVisible && target.UseCenteredIndicator)
             {
                 float angle = float.MinValue;
-                OffScreenIndicatorCore.GetCenteredIndicatorPositionAndAngle(ref screenPosition, ref angle, screenCentre, 100f);
+                OffScreenIndicatorCore.GetCenteredIndicatorPositionAndAngle(ref screenPosition, ref angle, screenCentre, centeredDistance);
                 indicator = GetIndicator(ref target.indicator, IndicatorType.CENTERED); // Gets the arrow indicator from the pool.
                 indicator.transform.rotation = Quaternion.Euler(0, 0, angle * Mathf.Rad2Deg); // Sets the rotation for the arrow indicator.
             }
