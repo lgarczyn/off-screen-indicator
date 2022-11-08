@@ -45,7 +45,7 @@ public class OffScreenIndicator : MonoBehaviour
             Mathf.Log(distance)
         );
 
-        return Mathf.Lerp(1f, target.FarScale, ratio);
+        return Mathf.Lerp(target.CloseScale, target.FarScale, ratio);
     }
 
     /// <summary>
@@ -96,7 +96,7 @@ public class OffScreenIndicator : MonoBehaviour
                 // Should the text be shown
                 bool hideText = (target.HideTextOutsideRange && isOutsideRange) || !target.NeedDistanceText;
                 // What scale to use for the text
-                float textScale = target.ScaleTextWithDistance ? logScale : 1f;
+                float textScale = target.ScaleTextWithDistance ? logScale : target.CloseScale;
                 // 
                 indicator.SetTextScale(hideText ? 0f : textScale);
                 if (!hideText) indicator.SetDistanceText(distanceFromCamera); //Set the distance text for the indicator.
@@ -108,7 +108,7 @@ public class OffScreenIndicator : MonoBehaviour
                     (target.HideArrowOutsideRange && !isBox) ||
                     (target.HideBoxOutsideRange && isBox));
                 // What scale to use for the indicator
-                float indicatorScale = target.ScaleIndicatorWithDistance ? logScale : 1f;
+                float indicatorScale = target.ScaleIndicatorWithDistance ? logScale : target.CloseScale;
                 indicator.SetIndicatorScale(hideIndicator ? 0f : indicatorScale);
 
                 indicator.transform.position = screenPosition; //Sets the position of the indicator on the screen.
