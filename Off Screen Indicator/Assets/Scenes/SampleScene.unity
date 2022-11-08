@@ -220,6 +220,7 @@ MonoBehaviour:
   targetColor: {r: 0.9209432, g: 0.9338235, b: 0, a: 0.959}
   needBoxIndicator: 1
   needArrowIndicator: 1
+  useCenteredIndicator: 0
   needDistanceText: 1
   maxDistance: 100
   minDistance: 1
@@ -653,6 +654,7 @@ GameObject:
   - component: {fileID: 1560628075}
   - component: {fileID: 1560628079}
   - component: {fileID: 1560628078}
+  - component: {fileID: 1560628080}
   m_Layer: 5
   m_Name: OffScreenIndicatorPanel
   m_TagString: Untagged
@@ -759,6 +761,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooledObject: {fileID: 11434930, guid: 759f4cf7d9905754ea923bde1c9b613d, type: 3}
+  pooledAmount: 1
+  willGrow: 1
+--- !u!114 &1560628080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560628073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a5f06cda12deb4fb18986fd2b7153c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObject: {fileID: 11434930, guid: 8dc689aa7b656e7469a87fe023570165, type: 3}
   pooledAmount: 1
   willGrow: 1
 --- !u!1 &1670982522
@@ -889,6 +906,7 @@ MonoBehaviour:
   targetColor: {r: 0.13475396, g: 0.10542819, b: 0.9558824, a: 1}
   needBoxIndicator: 1
   needArrowIndicator: 1
+  useCenteredIndicator: 0
   needDistanceText: 1
   maxDistance: 100
   minDistance: 1
@@ -1054,6 +1072,7 @@ GameObject:
   - component: {fileID: 1950926464}
   - component: {fileID: 1950926462}
   - component: {fileID: 1950926461}
+  - component: {fileID: 1950926466}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -1076,6 +1095,7 @@ MonoBehaviour:
   targetColor: {r: 1, g: 0.07352942, b: 0.07352942, a: 1}
   needBoxIndicator: 1
   needArrowIndicator: 1
+  useCenteredIndicator: 0
   needDistanceText: 1
   maxDistance: 10
   minDistance: 1
@@ -1152,6 +1172,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1950926466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950926460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5dd462da48ed9b49a885f1a9cf94fe1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetColor: {r: 1, g: 0.07352942, b: 0.07352942, a: 1}
+  needBoxIndicator: 0
+  needArrowIndicator: 1
+  useCenteredIndicator: 1
+  needDistanceText: 0
+  maxDistance: 10
+  minDistance: 1
+  hideArrowOutsideRange: 0
+  hideBoxOutsideRange: 0
+  hideTextOutsideRange: 1
+  scaleIndicatorWithDistance: 0
+  scaleTextWithDistance: 0
+  closeScale: 1
+  farScale: 3
+  indicator: {fileID: 0}
 --- !u!1 &2089249788
 GameObject:
   m_ObjectHideFlags: 0
@@ -1186,6 +1233,7 @@ MonoBehaviour:
   targetColor: {r: 0.12635165, g: 0.9044118, b: 0.19610858, a: 1}
   needBoxIndicator: 1
   needArrowIndicator: 1
+  useCenteredIndicator: 0
   needDistanceText: 1
   maxDistance: 100
   minDistance: 1
