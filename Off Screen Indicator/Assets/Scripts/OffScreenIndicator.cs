@@ -13,11 +13,11 @@ namespace PixelPlay.OffScreenIndicator
 [DefaultExecutionOrder(-1)]
 public class OffScreenIndicator : MonoBehaviour
 {
-    [Range(0.5f, 0.9f)]
+    [Range(0.5f, 1f)]
     [Tooltip("Distance offset of the indicators from the centre of the screen")]
     [SerializeField] private float screenBoundOffset = 0.9f;
 
-    [Range(0.5f, 0.9f)]
+    [Range(0, 400f)]
     [Tooltip("Distance of the centered indicators from the centre of the screen")]
     [SerializeField] private float centeredDistance = 100f;
 
